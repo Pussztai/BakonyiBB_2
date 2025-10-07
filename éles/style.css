@@ -1,9 +1,74 @@
-.tablazat{
-    height: 400px;
-    width: 400px;
-    text-align: center; 
-    border: 1px solid black;
-    margin: 10% auto;
-    
-    
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background: linear-gradient(135deg, #8B7355 0%, #A0826D 100%);
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+section {
+	width: 100%;
+	max-width: 600px;
+}
+
+.tablazat {
+	width: 100%;
+	background: #FFF8F0;
+	border-collapse: separate;
+	border-spacing: 0;
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.tablazat td {
+	padding: 28px;
+	text-align: center;
+	font-size: 14px;
+	color: #6B5444;
+	font-weight: 500;
+	border: 1px solid #E8DDD0;
+	background: #FFFBF7;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	position: relative;
+}
+
+.tablazat td:hover {
+	background: #C9A88A;
+	color: #FFF8F0;
+	transform: scale(1.05);
+	z-index: 10;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tablazat tr:first-child td {
+	border-top: none;
+}
+
+.tablazat tr:last-child td {
+	border-bottom: none;
+}
+
+.tablazat tr td:first-child {
+	border-left: none;
+}
+
+.tablazat tr td:last-child {
+	border-right: none;
+}
+
+@media (max-width: 600px) {
+	.tablazat td {
+		padding: 20px;
+		font-size: 12px;
+	}
 }
