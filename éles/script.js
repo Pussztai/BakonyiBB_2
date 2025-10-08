@@ -61,6 +61,21 @@ function canPlace(row, col, size, horizontal) {
     return true;
 }
 
+function getDistanceToNearestShip(row, col) {
+    let minDistance = Infinity;
+    
+    for (let i = 0; i < nRow; i++) {
+        for (let j = 0; j < nCell; j++) {
+            if (board[i][j] !== null) {
+                const distance = Math.max(Math.abs(i - row), Math.abs(j - col));
+                minDistance = Math.min(minDistance, distance);
+            }
+        }
+    }
+    
+    return minDistance;
+}
+
 ships.forEach(ship => {
     placeShip(ship);
 });
@@ -79,18 +94,24 @@ for (let i = 0; i < nRow; i++) {
                 const shipId = this.getAttribute('data-ship-id');
                 RevealShip(shipId);
             });
-            
-            // cell.addEventListener('mouseleave', function() {
-            //     const shipId = this.getAttribute('data-ship-id');
-            //     unhighlightShip(shipId);
-            // });
         } else {
             cell.innerHTML = "";
+            cell.setAttribute('data-row', i);
+            cell.setAttribute('data-col', j);
+            
+            cell.addEventListener('click', function() {
+                if (!this.classList.contains('clicked')) {
+                    const row = parseInt(this.getAttribute('data-row'));
+                    const col = parseInt(this.getAttribute('data-col'));
+                    const distance = getDistanceToNearestShip(row, col);
+                    
+                    this.innerHTML = distance;
+                    this.classList.add('clicked');
+                }
+            });
         }
     }
 }
-
-// kijelolo
 
 function RevealShip(shipId) {
     const shipCells = document.querySelectorAll(`[data-ship-id="${shipId}"]`);
@@ -99,10 +120,3 @@ function RevealShip(shipId) {
         cell.classList.add('revealed','hovered');
     });
 }
-
-// function unhighlightShip(shipId) {
-//     const shipCells = document.querySelectorAll(`[data-ship-id="${shipId}"]`);
-//     shipCells.forEach(cell => {
-//         cell.classList.remove('hovered');
-//     });
-// }

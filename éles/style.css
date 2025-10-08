@@ -28,12 +28,16 @@ section {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    table-layout: fixed; /* hogy FIX mérete legyen */
 }
 
 .tablazat td {
-    padding: 28px;
+    width: 50px; 
+    height: 50px;
+    padding: 0;
     text-align: center;
-    font-size: 14px;
+    vertical-align: middle; /* függőleges */
+    font-size: 20px; /* emoji és szám mérete */
     font-weight: 500;
     color: #6B5444;
     background: #FFFBF7;
@@ -41,6 +45,7 @@ section {
     cursor: pointer;
     transition: all 0.25s ease;
     position: relative;
+    overflow: hidden;
 }
 
 .tablazat td:hover {
@@ -108,12 +113,4 @@ section {
 
 .tablazat tr td:last-child {
     border-right: none;
-}
-
-
-@media (max-width: 600px) {
-    .tablazat td {
-        padding: 16px;
-        font-size: 12px;
-    }
 }
