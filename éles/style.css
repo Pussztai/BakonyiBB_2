@@ -1,3 +1,4 @@
+/* Alapbeállítások */
 * {
     margin: 0;
     padding: 0;
@@ -33,12 +34,12 @@ section {
     padding: 28px;
     text-align: center;
     font-size: 14px;
-    color: #6B5444;
     font-weight: 500;
-    border: 1px solid #E8DDD0;
+    color: #6B5444;
     background: #FFFBF7;
-    transition: all 0.3s ease;
+    border: 1px solid #E8DDD0;
     cursor: pointer;
+    transition: all 0.25s ease;
     position: relative;
 }
 
@@ -51,18 +52,37 @@ section {
 }
 
 .tablazat td.ship {
+    background: #FFFBF7;
+    color: #6B5444;
+    animation: none;
+    transition: all 0.25s ease;
+}
+
+.tablazat td.ship.hidden {
+    background: #FFFBF7;
+    color: transparent;
+    opacity: 1;
+    animation: none;
+    transform: none;
+    cursor: pointer;
+}
+
+.tablazat td.ship.hovered,
+.tablazat td.ship.hovered:hover {
+    color: #6B5444;
+    background: #C9A88A;
+    transform: scale(1.05);
+    z-index: 10;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.tablazat td.ship.revealed {
+    color: #6B5444;
     background: #F5E6D3;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-.tablazat td.ship.hovered {
-    background: #FFD700;
-    transform: scale(1.1);
-}
-
-.tablazat td.ship:hover {
-    background: #140f09;
-    transform: scale(1.1) rotate(5deg);
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.3s;
 }
 
 @keyframes pulse {
@@ -89,6 +109,7 @@ section {
 .tablazat tr td:last-child {
     border-right: none;
 }
+
 
 @media (max-width: 600px) {
     .tablazat td {

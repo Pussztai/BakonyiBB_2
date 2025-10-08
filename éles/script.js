@@ -72,34 +72,37 @@ for (let i = 0; i < nRow; i++) {
         let cell = sor.insertCell();
         if (board[i][j] !== null) {
             cell.innerHTML = board[i][j].icon;
-            cell.classList.add('ship');
+            cell.classList.add('ship','hidden');
             cell.setAttribute('data-ship-id', board[i][j].id);
             
-            cell.addEventListener('mouseenter', function() {
+            cell.addEventListener('click', function() {
                 const shipId = this.getAttribute('data-ship-id');
-                highlightShip(shipId);
+                RevealShip(shipId);
             });
             
-            cell.addEventListener('mouseleave', function() {
-                const shipId = this.getAttribute('data-ship-id');
-                unhighlightShip(shipId);
-            });
+            // cell.addEventListener('mouseleave', function() {
+            //     const shipId = this.getAttribute('data-ship-id');
+            //     unhighlightShip(shipId);
+            // });
         } else {
             cell.innerHTML = "";
         }
     }
 }
 
-function highlightShip(shipId) {
+// kijelolo
+
+function RevealShip(shipId) {
     const shipCells = document.querySelectorAll(`[data-ship-id="${shipId}"]`);
     shipCells.forEach(cell => {
-        cell.classList.add('hovered');
+        cell.classList.remove('hidden');
+        cell.classList.add('revealed','hovered');
     });
 }
 
-function unhighlightShip(shipId) {
-    const shipCells = document.querySelectorAll(`[data-ship-id="${shipId}"]`);
-    shipCells.forEach(cell => {
-        cell.classList.remove('hovered');
-    });
-}
+// function unhighlightShip(shipId) {
+//     const shipCells = document.querySelectorAll(`[data-ship-id="${shipId}"]`);
+//     shipCells.forEach(cell => {
+//         cell.classList.remove('hovered');
+//     });
+// }
