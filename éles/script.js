@@ -7,16 +7,11 @@ for (let i = 0; i < nRow; i++) {
 }
 
 const egeszTabla = document.getElementById("map");
+const ships = []
 
-const ships = [
-    { icon: '🚀', size: 1, id: 1 },
-    { icon: '🚀', size: 1, id: 2 },
-    { icon: '🚀', size: 1, id: 3 },
-    { icon: '🚀', size: 1, id: 4 },
-    { icon: '🚀', size: 1, id: 5 },
-    { icon: '🚀', size: 1, id: 6 },
-    { icon: '🚀', size: 1, id: 7 },
-]
+for (let i = 0; i < 7; i++) {
+    ships.push({ icon: '🚀', size: 1, id: i + 1 })
+} 
 
 function placeShip(ship) {
     let placed = false;
@@ -92,7 +87,7 @@ for (let i = 0; i < nRow; i++) {
             
             cell.addEventListener('click', function() {
                 const shipId = this.getAttribute('data-ship-id');
-                RevealShip(shipId);
+                revealShip(shipId);
             });
         } else {
             cell.innerHTML = "";
@@ -113,7 +108,7 @@ for (let i = 0; i < nRow; i++) {
     }
 }
 
-function RevealShip(shipId) {
+function revealShip(shipId) {
     const shipCells = document.querySelectorAll(`[data-ship-id="${shipId}"]`);
     shipCells.forEach(cell => {
         cell.classList.remove('hidden');
