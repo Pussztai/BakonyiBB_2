@@ -109,9 +109,29 @@ for (let i = 0; i < nRow; i++) {
 }
 
 function revealShip(shipId) {
+    const counterSpan = document.getElementById("counter");
+    let currentValue = parseInt(counterSpan.textContent);
+    
     const shipCells = document.querySelectorAll(`[data-ship-id="${shipId}"]`);
     shipCells.forEach(cell => {
         cell.classList.remove('hidden');
         cell.classList.add('revealed','hovered');
+        currentValue++;
+        counterSpan.textContent = currentValue;
     });
+    if (currentValue === 7){
+        gameOver();
+    }
 }
+
+const gameOverBox = document.getElementById("gameOver");
+
+function gameOver(){
+    gameOverBox.style.display = "flex";
+}
+
+const restartB = document.getElementById("restartBtn");
+restartB.addEventListener('click', function(){
+    gameOverBox.style.display = "none";
+    location.reload();
+})

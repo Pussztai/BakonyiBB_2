@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>
+      <h2>Megtalált hajó(k): <span id="counter">0</span>/7</h2>
+    </div>
     <section>
-        <table class="tablazat" id="map" border="1"></table>
+      <table class="tablazat" id="map" border="1"></table>
     </section>
 
+    <div class="game-over-overlay hidden" id="gameOver">
+      <div class="game-over-card">
+        <h1 class="game-over-title">Gratulálok</h1>
+        <p>Megtaláltál minden hajót!</p>
+
+        <div class="buttons">
+          <button class="btn" id="restartBtn">Újra</button>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

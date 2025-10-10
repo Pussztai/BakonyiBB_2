@@ -10,6 +10,7 @@ body {
     background: linear-gradient(135deg, #8B7355 0%, #A0826D 100%);
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
@@ -113,4 +114,35 @@ section {
 
 .tablazat tr td:last-child {
     border-right: none;
+}
+
+
+
+.game-over-overlay {
+  position: fixed;
+  inset: 0; 
+  background: rgba(0, 0, 0, 0.7); 
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+
+.game-over-card {
+  background: #222;
+  color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  max-width: 400px;
+  width: 90%;
+}
+
+.game-over-title {
+  font-size: 2rem;
+  color: #4dff7a;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
