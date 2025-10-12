@@ -146,3 +146,11 @@ section {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
+
+.gamemodeSelector{
+    display: flex;
+    gap: 30px;
+    padding: 10px;
+}
+
