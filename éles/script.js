@@ -75,19 +75,32 @@ ships.forEach(ship => {
     placeShip(ship);
 });
 
+const counterSpan = document.getElementById("counter");
+const lepesCounter = document.getElementById("lepes");
+
 for (let i = 0; i < nRow; i++) {
     let sor = egeszTabla.insertRow();
 
     for (let j = 0; j < nCell; j++) { 
         let cell = sor.insertCell();
+        
         if (board[i][j] !== null) {
             cell.innerHTML = board[i][j].icon;
             cell.classList.add('ship','hidden');
             cell.setAttribute('data-ship-id', board[i][j].id);
             
             cell.addEventListener('click', function() {
+                if (this.classList.contains('found')) return;
+                let lepesValue = parseInt(lepesCounter.textContent);
+                stepCounter(lepesValue);
+
+                let currentValue = parseInt(counterSpan.textContent);
+                shipCounter(currentValue);
+                
                 const shipId = this.getAttribute('data-ship-id');
                 revealShip(shipId);
+
+                this.classList.add('found');
             });
         } else {
             cell.innerHTML = "";
@@ -99,7 +112,8 @@ for (let i = 0; i < nRow; i++) {
                     const row = parseInt(this.getAttribute('data-row'));
                     const col = parseInt(this.getAttribute('data-col'));
                     const distance = getDistanceToNearestShip(row, col);
-                    
+                    let lepesValue = parseInt(lepesCounter.textContent);
+                    stepCounter(lepesValue);
                     this.innerHTML = distance;
                     this.classList.add('clicked');
                 }
@@ -108,20 +122,30 @@ for (let i = 0; i < nRow; i++) {
     }
 }
 
+function shipCounter(value){
+    value++;
+    counterSpan.textContent = value;
+    if(value === 7){
+        gameOver();
+    }
+}
+
+function stepCounter(value){
+    value++;
+    lepesCounter.textContent = value;
+}
+
+
 function revealShip(shipId) {
-    const counterSpan = document.getElementById("counter");
-    let currentValue = parseInt(counterSpan.textContent);
+    
     
     const shipCells = document.querySelectorAll(`[data-ship-id="${shipId}"]`);
     shipCells.forEach(cell => {
         cell.classList.remove('hidden');
         cell.classList.add('revealed','hovered');
-        currentValue++;
-        counterSpan.textContent = currentValue;
+        
     });
-    if (currentValue === 7){
-        gameOver();
-    }
+    
 }
 
 const gameOverBox = document.getElementById("gameOver");
