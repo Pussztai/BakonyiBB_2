@@ -110,6 +110,7 @@ ships.forEach((ship) => {
 const counterSpan = document.getElementById("counter");
 const lepesCounter = document.getElementById("lepes");
 let isChosen = false;
+const warning = document.querySelector(".figyelmeztetoText");
 
 
 document.getElementById("normalGame").addEventListener("click", function () {
@@ -138,6 +139,7 @@ if (valasztott === "normal") {
   gomb.classList.add("active");
   isChosen = true;
 }
+
 
 let remainingMoves = 20;
 const BONUS_MOVES = 5;
