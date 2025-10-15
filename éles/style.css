@@ -57,6 +57,20 @@ section {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+.tablazat td.ship.hidden:hover {
+    background: #C9A88A !important;
+    color: transparent;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.tablazat td:hover {
+    background: #C9A88A;
+    color: #FFF8F0;
+    transform: scale(1.05);
+    z-index: 10;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
 .tablazat td.ship {
     background: #FFFBF7;
     color: #6B5444;
