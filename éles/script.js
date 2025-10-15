@@ -143,8 +143,8 @@ for (let i = 0; i < nRow; i++) {
 
                     // Ha már most elfogytak a lépések, vége
                     if (remainingMoves <= 0) {
-                        gameEnded = true;
                         GameOver();
+                        // gameEnded = true;
                         return;
                     }
 
@@ -183,7 +183,7 @@ for (let i = 0; i < nRow; i++) {
                         lepesCounter.textContent = remainingMoves;
 
                         if (remainingMoves <= 0) {
-                            gameEnded = true;
+                            // gameEnded = true;
                             GameOver();
                             return;
                         }
@@ -198,13 +198,12 @@ for (let i = 0; i < nRow; i++) {
 }
 
 function shipCounter(value) {
-    if (gameEnded) return; // ha már vége, ne számoljon tovább!
+    if (gameEnded) return;
 
-    value++;
+    value = isNaN(value) ? 0 : value + 1;
     counterSpan.textContent = value;
 
     if (value === 7) {
-        gameEnded = true;
         Win();
     }
 }
